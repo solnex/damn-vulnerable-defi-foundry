@@ -34,3 +34,10 @@ Alice, Bob, Charlie and David have already deposited some DVT tokens, and have w
 You don’t have any DVT tokens. But in the upcoming round, you must claim most rewards for yourself.
 
 By the way, rumours say a new pool has just launched. Isn’t it offering flash loans of DVT tokens?
+
+## Challenge #6 - Selfie
+A new cool lending pool has launched! It’s now offering flash loans of DVT tokens. It even includes a fancy governance mechanism to control it.
+
+What could go wrong, right ?
+
+You start with no DVT tokens in balance, and the pool has 1.5 million. Your goal is to take them all.
