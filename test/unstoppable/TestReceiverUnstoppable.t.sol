@@ -6,6 +6,7 @@ import {DeployReceiverUnstoppable} from "../../script/DeployReceiverUnstoppable.
 import {ReceiverUnstoppable} from "../../src/unstoppable/ReceiverUnstoppable.sol";
 import {UnstoppableVault} from "../../src/unstoppable/UnstoppableVault.sol";
 import {DamnValuableToken} from "../../src/DamnValuableToken.sol";
+import {HelperConfig} from "../../script/HelperConfig.s.sol";
 
 contract TestReceiverUnstoppable is Test {
     UnstoppableVault public vault;
@@ -13,7 +14,7 @@ contract TestReceiverUnstoppable is Test {
     DamnValuableToken public token;
     address public constant DEFAULT_ADDRESS =
         0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
-
+    HelperConfig public helperConfig;
     uint256 constant TOKENS_IN_VAULT = 1 ether;
 
     uint256 constant INITIAL_PLAYER_TOKEN_BALANCE = 0.1 ether;
@@ -22,7 +23,8 @@ contract TestReceiverUnstoppable is Test {
 
     function setUp() public {
         DeployReceiverUnstoppable deploy = new DeployReceiverUnstoppable();
-        (vault, receiver, token) = deploy.run();
+        (vault, receiver, token, helperConfig) = deploy.run();
+        (, address deployerAddress) = helperConfig.activeNetworkConfig();
         assertEq(address(vault.asset()), address(token));
         vm.startPrank(DEFAULT_ADDRESS);
         token.approve(address(vault), TOKENS_IN_VAULT);
@@ -36,6 +38,7 @@ contract TestReceiverUnstoppable is Test {
         assertEq(vault.flashFee(address(token), TOKENS_IN_VAULT - 1), 0);
         assertEq(vault.flashFee(address(token), TOKENS_IN_VAULT), 0.05 ether);
 
+        vm.prank(deployerAddress);
         token.transfer(player, INITIAL_PLAYER_TOKEN_BALANCE);
         assertEq(token.balanceOf(player), INITIAL_PLAYER_TOKEN_BALANCE);
     }

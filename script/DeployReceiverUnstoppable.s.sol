@@ -15,7 +15,12 @@ contract DeployReceiverUnstoppable is Script {
 
     function run()
         public
-        returns (UnstoppableVault, ReceiverUnstoppable, DamnValuableToken)
+        returns (
+            UnstoppableVault,
+            ReceiverUnstoppable,
+            DamnValuableToken,
+            HelperConfig
+        )
     {
         HelperConfig helperConfig = new HelperConfig();
         (uint256 deployerKey, address deployerAccount) = helperConfig
@@ -25,6 +30,6 @@ contract DeployReceiverUnstoppable is Script {
         pool = new UnstoppableVault(token, deployerAccount, deployerAccount);
         receiver = new ReceiverUnstoppable(address(pool));
         vm.stopBroadcast();
-        return (pool, receiver, token);
+        return (pool, receiver, token, helperConfig);
     }
 }
