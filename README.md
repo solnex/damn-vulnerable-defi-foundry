@@ -43,4 +43,9 @@ What could go wrong, right ?
 You start with no DVT tokens in balance, and the pool has 1.5 million. Your goal is to take them all.
 
 ## Ethernaut - switch
-construct bytes data with bytes32 to skip check.
+
+How to turn the switch on ？
+
+Construct bytes data with bytes32 to skip check ！
+
+Detail is here: [Contruct data](https://blog.softbinator.com/solving-ethernaut-level-29-switch/)
