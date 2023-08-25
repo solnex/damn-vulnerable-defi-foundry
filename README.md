@@ -49,3 +49,7 @@ How to turn the switch on ？
 Construct bytes data with bytes32 to skip check ！
 
 Detail is here: [Contruct data](https://blog.softbinator.com/solving-ethernaut-level-29-switch/)
+
+## Ethernaut - puzzke-wallet
+
+Proxy contract slot overwrite should always be keep an eye on.
